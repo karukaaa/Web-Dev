@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facebook</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        justify-content: center;
+        background-color: #e7e7e7;
+        display: flex;
+        align-items: center;
+      }
+
+      #logo {
+        width: 300px;
+      }
+      #header {
+        width: 50%;
+        position: relative;
+        top: 100px;
+      }
+
+      .login-form {
+        width: 25%;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-shadow: 0px 0px 10px gray;
+        position: relative;
+        top: 100px;
+      }
+      .input-login {
+        height: 40px;
+        width: 300px;
+      }
+      #login-button {
+        background-color: rgb(88, 126, 220);
+        font-weight: bold;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+      #signup-button {
+        height: 45px;
+        color: white;
+        width: 170px;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(123, 210, 86);
+        margin-top: 15px;
+      }
+      #login-window {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="login-window">
+      <div id="header">
+        <img src="facebook_logo.png" alt="Facebook logo" id="logo" />
+        <p
+          style="
+            width: 50%;
+            margin: 0;
+            font-family: sans-serif;
+            font-weight: 600;
+            font-size: 1.4em;
+          "
+        >
+          Facebook помогает нам всегда общаться со своими знакомыми и оставаться
+          на связи
+        </p>
+      </div>
+
+      <form class="login-form">
+        <input
+          type="text"
+          placeholder="Электронная почта или номер"
+          class="input-login"
+        /><br />
+        <input type="password" placeholder="Пароль" class="input-login" /><br />
+        <button class="input-login" id="login-button">Вход</button><br />
+        <a href="#" style="text-decoration: none">Забыли пароль?</a>
+        <hr style="width: 100%" />
+        <button id="signup-button">Создать аккаунт</button>
+      </form>
+      <!-- <p>Сoздать страницу</p> -->
+    </div>
+  </body>
+</html>

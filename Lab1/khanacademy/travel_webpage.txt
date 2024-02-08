@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Project: Travel webpage</title>
+        <style>
+        #description{
+            background-color:pink;
+        }
+        .pros{
+            background-color: lavender;
+        }
+        h1{
+            color: blue;
+        }
+        </style>
+    </head>
+    <body>
+    
+        <h1>Travel to <em>Kazakhstan</em></h1>
+        
+        <p id="description">Its a <strong>great</strong> country<br>
+            Located in central Asia
+        </p>
+        
+        <h5>Views: </h5>
+        <img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/landscapes/fields-of-grain.png" alt="field picture" width="148">
+        <img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/landscapes/lake.png" alt="lake picture" width="154">
+        <img src="https://cdn.kastatic.org/third_party/javascript-khansrc/live-editor/build/images/landscapes/beach-at-dusk.png" alt="beach picture" width="154">
+        <ol>
+            <li>Field view</li>
+            <li>Lake view</li>
+            <li>Beach view</li>
+        </ol>
+        <h2>What is nice about it?</h2>
+        <p class="pros">We have a lot of places and cities</p>
+        <p class="pros">And also animals</p>
+        
+        <ul>
+            <li>Dogs</li>
+            <li>Horses</li>
+            <li>Cats</li>
+        </ul>
+    </body>
+</html>
