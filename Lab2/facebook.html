@@ -25,7 +25,7 @@
       }
 
       .login-form {
-        width: 25%;
+        width: 100%;
         padding: 20px;
         display: flex;
         flex-direction: column;
@@ -80,19 +80,30 @@
         </p>
       </div>
 
-      <form class="login-form">
-        <input
-          type="text"
-          placeholder="Электронная почта или номер"
-          class="input-login"
-        /><br />
-        <input type="password" placeholder="Пароль" class="input-login" /><br />
-        <button class="input-login" id="login-button">Вход</button><br />
-        <a href="#" style="text-decoration: none">Забыли пароль?</a>
-        <hr style="width: 100%" />
-        <button id="signup-button">Создать аккаунт</button>
-      </form>
-      <!-- <p>Сoздать страницу</p> -->
+      <div>
+        <form class="login-form">
+          <input
+            type="text"
+            placeholder="Электронная почта или номер"
+            class="input-login"
+          /><br />
+          <input
+            type="password"
+            placeholder="Пароль"
+            class="input-login"
+          /><br />
+          <button class="input-login" id="login-button">Вход</button><br />
+          <a href="#" style="text-decoration: none">Забыли пароль?</a>
+          <hr style="width: 100%" />
+          <button id="signup-button">Создать аккаунт</button>
+        </form>
+
+        <p style="text-align: center; top: 100px">
+          <span style="font-weight: bolder">Создать страницу</span>
+          знаменитости,<br />
+          музыкальной группы или компании.
+        </p>
+      </div>
     </div>
   </body>
 </html>
