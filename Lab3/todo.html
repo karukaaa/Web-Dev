@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .header {
+        background-color: rgb(57, 57, 57);
+        height: 60px;
+        display: flex;
+        align-items: center;
+      }
+      .header p {
+        margin-left: 80px;
+        font-size: 30px;
+        color: rgb(185, 185, 167);
+        font-family: sans-serif;
+      }
+
+      .task_area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 50%;
+        margin: auto;
+      }
+      #tasks {
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+      }
+      .task {
+        display: flex;
+        align-items: center;
+        border: 1px solid gray;
+        width: 100%;
+        justify-content: space-between;
+        height: 60px;
+      }
+      .trash_img {
+        width: 20px;
+        margin-right: 10px;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .trash_img:hover {
+        transform: scale(1.2);
+      }
+
+      h1 {
+        text-align: left;
+        width: 100%;
+        margin-top: 60px;
+        margin-bottom: 0;
+        font-family: sans-serif;
+        font-weight: 300;
+      }
+      .new_task {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+      }
+      #input_field {
+        width: 340px;
+        height: 27px;
+        padding-left: 10px;
+        border-radius: 5px;
+      }
+      #add_button {
+        width: 50px;
+        background-color: rgb(85, 143, 195);
+        color: white;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <p>ToDo list</p>
+    </div>
+    <div class="task_area">
+      <h1>ToDo List</h1>
+
+      <div class="new_task">
+        <input type="text" placeholder="New task" id="input_field" />
+        <button id="add_button">Add</button>
+      </div>
+
+      <script>
+        document
+          .getElementById("add_button")
+          .addEventListener("click", function () {
+            var task_text = document.getElementById("input_field").value;
+            if (task_text.trim() !== "") {
+              var taskLists = document.getElementById("tasks");
+              var newTaskDiv = document.createElement("div");
+              newTaskDiv.className = "task";
+              newTaskDiv.innerHTML = `<div style="display: flex; margin-left: 10px">
+            <input type="checkbox" />
+            <p style="margin-left: 10px">${task_text}</p>
+          </div>
+          <div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDy9m-m03GfPgKGdnIVSivaOneNkdwUs-Q1l6sKi6pOQ&s"
+              alt="Trash bin picture"
+              class="trash_img"
+            />
+          </div>`;
+
+              taskLists.insertBefore(newTaskDiv, taskLists.firstChild);
+              document.getElementById("input_field").value = "";
+            }
+          });
+
+        document.addEventListener("click", function (event) {
+          if (event.target.classList.contains("trash_img")) {
+            event.target.closest(".task").remove();
+          }
+        });
+
+        document.addEventListener("click", function (event) {
+          if (event.target.type === "checkbox") {
+            var taskText = event.target.nextElementSibling;
+            if (event.target.checked) {
+              taskText.style.textDecoration = "line-through";
+            } else {
+              taskText.style.textDecoration = "none";
+            }
+          }
+        });
+      </script>
+
+      <div id="tasks" style="width: 100%">
+        <div class="task">
+          <div style="display: flex; margin-left: 10px">
+            <input type="checkbox" />
+            <p style="margin-left: 10px">Do a web dev lab</p>
+          </div>
+          <div>
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDy9m-m03GfPgKGdnIVSivaOneNkdwUs-Q1l6sKi6pOQ&s"
+              alt="Trash bin picture"
+              class="trash_img"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
