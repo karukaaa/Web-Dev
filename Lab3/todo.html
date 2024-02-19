@@ -93,6 +93,7 @@
       </div>
 
       <script>
+        let test = null;
         document
           .getElementById("add_button")
           .addEventListener("click", function () {
@@ -115,14 +116,20 @@
 
               taskLists.insertBefore(newTaskDiv, taskLists.firstChild);
               document.getElementById("input_field").value = "";
+            } else {
+              alert("error empty line");
+              console.log();
             }
           });
 
         document.addEventListener("click", function (event) {
           if (event.target.classList.contains("trash_img")) {
             event.target.closest(".task").remove();
+            this.test = 5;
           }
         });
+
+        function test(test2) {}
 
         document.addEventListener("click", function (event) {
           if (event.target.type === "checkbox") {
@@ -134,6 +141,9 @@
             }
           }
         });
+
+        test = "test" + "1" + "2";
+        console.log(this.test);
       </script>
 
       <div id="tasks" style="width: 100%">
