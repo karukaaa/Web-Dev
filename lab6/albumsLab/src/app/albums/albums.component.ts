@@ -19,4 +19,13 @@ export class AlbumsComponent {
       error=>{console.error(error);}
     );
   }
+  deleteAlbum(albumId: number):void{
+    this.albumsService.deleteAlbum(albumId).subscribe(
+      () => {
+        this.albums = this.albums.filter(album =>album.id !== albumId);
+      },
+      error => {console.error(error);
+      }
+    )
+  }
 }
