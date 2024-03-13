@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class AlbumDetailComponent {
   album: Album | undefined;
+  editedTitle: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -31,14 +32,16 @@ export class AlbumDetailComponent {
     );
   }
 
-  // deleteAlbum():void{
-  //   if(this.album){
-  //     this.albumsService.deleteAlbum(this.album.id).subscribe(
-  //     ()=> {this.router.navigate(['albums']);}
-  //   );
-  //   }else{
-  //     console.error('no album');
-  //   }
-    
-  // }
+
+  saveChanges(): void {
+    if (!this.album || !this.editedTitle.trim()) {
+      console.error("Missing edited title or album");
+      return;
+    }
+    const updatedAlbum = { ...this.album, title: this.editedTitle };
+    this.albumsService.updateAlbum(updatedAlbum).subscribe(
+      () => console.log("Album title updated successfully"),
+      error => console.error("Error updating album title:", error)
+    );
+  }
 }

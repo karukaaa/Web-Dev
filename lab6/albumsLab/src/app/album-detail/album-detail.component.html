@@ -3,5 +3,11 @@
   <p>albumId: {{ album.id }}</p>
   <p>userId: {{ album.userId }}</p>
   <p>Title: {{ album.title }}</p>
-  <!-- <button (click)="deleteAlbum()">Delete</button> -->
+
+  <input
+    type="text"
+    [(ngModel)]="editedTitle"
+    placeholder="Enter edited title"
+  />
+  <button (click)="saveChanges()">Save</button>
 </div>

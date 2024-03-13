@@ -9,7 +9,8 @@ import { AlbumsService } from '../albums.service';
 })
 export class AlbumsComponent {
   albums: Album[] = [];
-  @Output() albumDeleted = new EventEmitter<number>();
+  newTitle: string='';
+  newUserId: number | undefined;
 
   constructor(private albumsService: AlbumsService){}
 
@@ -27,5 +28,30 @@ export class AlbumsComponent {
       error => {console.error(error);
       }
     )
+  }
+
+  createAlbum():void{
+    if(!this.newTitle || !this.newUserId){
+      console.error('Something is lacking');
+      return;
+    }
+    
+    const newAlbum: Album={
+      userId: this.newUserId,
+      id: 0,
+      title: this.newTitle
+    }
+    newAlbum.id = this.albumsService.newId(this.albums);
+
+    this.albumsService.createAlbum(newAlbum).subscribe(
+      createdAlbum => {
+        this.albums.push(createdAlbum);
+        this.newTitle = '';
+        this.newUserId = undefined;
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
 }
