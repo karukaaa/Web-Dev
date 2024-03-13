@@ -1,0 +1,10 @@
+<router-outlet></router-outlet>
+<ul>
+  <li *ngFor="let album of albums">
+    <a [routerLink]="['/albums', album.id]">{{ album.title }}</a>
+    <!-- <button (click)="onDelete(album.id)">Delete</button> -->
+    <button (click)="deleteAlbum(album)" style="margin-left: 5px">
+      Delete
+    </button>
+  </li>
+</ul>
