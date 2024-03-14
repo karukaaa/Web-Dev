@@ -1,1 +1,9 @@
-<p>album-photos works!</p>
+<div *ngIf="photos$ | async as photos">
+  <h2>Photos for Album {{ albumId }}</h2>
+  <div *ngFor="let photo of photos">
+    <h3>{{ photo.title }}</h3>
+    <img [src]="photo.thumbnailUrl" alt="Thumbnail" />
+    <img [src]="photo.url" alt="Photo" />
+  </div>
+  <button type="button" (click)="goBack()">Return</button>
+</div>

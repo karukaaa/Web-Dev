@@ -3,6 +3,7 @@ import { Album } from '../album';
 import { AlbumsService } from '../albums.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-album-detail',
   templateUrl: './album-detail.component.html',
@@ -38,10 +39,21 @@ export class AlbumDetailComponent {
       console.error("Missing edited title or album");
       return;
     }
-    const updatedAlbum = { ...this.album, title: this.editedTitle };
-    this.albumsService.updateAlbum(updatedAlbum).subscribe(
-      () => console.log("Album title updated successfully"),
-      error => console.error("Error updating album title:", error)
+
+    this.albumsService.updateAlbum(this.album.id, this.editedTitle).subscribe(
+      updatedAlbum => {
+        this.album = updatedAlbum;
+        this.editedTitle = '';
+      },
+      error => console.error(error)
     );
+  }
+
+  goBack(): void{
+    this.router.navigate(['/albums']);
+  }
+
+  viewPhotos(): void {
+    this.router.navigate(['photos'], { relativeTo: this.route });
   }
 }

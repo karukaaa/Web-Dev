@@ -1,22 +1,32 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable, catchError, tap } from 'rxjs';
 import { Album } from './album';
 import { map } from 'rxjs';
+import { Photo } from './photo';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AlbumsService {
   url = 'https://jsonplaceholder.typicode.com/albums';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  photosUrl = 'https://jsonplaceholder.typicode.com/albums/1/photos'
+
 
   constructor(private http: HttpClient) { }
 
   getAlbums():Observable<Album[]>{
     return this.http.get<Album[]>(this.url);
+  }
+
+  getPhotos(): Observable<Photo[]> {
+    return this.http.get<Photo[]>(this.photosUrl);
+  }
+  
+  getPhotosByAlbumId(albumId: number): Observable<Photo[]> {
+    const albumPhotosUrl = `${this.url}/albums/${albumId}/photos`;
+    return this.http.get<Photo[]>(albumPhotosUrl);
   }
 
   getAlbum(albumId:number):Observable<Album | undefined>{
@@ -39,8 +49,9 @@ export class AlbumsService {
     return maxId >= 0 ?maxId+1 : 0;
   }
 
-  updateAlbum(album: Album): Observable<Album> {
-    const url = `${this.url}/${album.id}`;
-    return this.http.put<Album>(url, album);
+  updateAlbum(albumId: number, newTitle: string): Observable<Album> {
+    const albumUrl = `${this.url}/${albumId}`;
+    return this.http.put<Album>(albumUrl, { title: newTitle });
   }
+
 }

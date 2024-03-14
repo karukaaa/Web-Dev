@@ -3,7 +3,8 @@
   <p>albumId: {{ album.id }}</p>
   <p>userId: {{ album.userId }}</p>
   <p>Title: {{ album.title }}</p>
-
+  <button type="button" (click)="goBack()">Return</button>
+  <br />
   <input
     type="text"
     [(ngModel)]="editedTitle"
