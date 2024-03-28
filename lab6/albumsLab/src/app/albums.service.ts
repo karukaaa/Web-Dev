@@ -23,11 +23,6 @@ export class AlbumsService {
   getPhotos(): Observable<Photo[]> {
     return this.http.get<Photo[]>(this.photosUrl);
   }
-  
-  getPhotosByAlbumId(albumId: number): Observable<Photo[]> {
-    const albumPhotosUrl = `${this.url}/albums/${albumId}/photos`;
-    return this.http.get<Photo[]>(albumPhotosUrl);
-  }
 
   getAlbum(albumId:number):Observable<Album | undefined>{
     return this.getAlbums().pipe(
@@ -49,9 +44,8 @@ export class AlbumsService {
     return maxId >= 0 ?maxId+1 : 0;
   }
 
-  updateAlbum(albumId: number, newTitle: string): Observable<Album> {
+  updateAlbum(albumId: number, newUserId: number, newTitle: string): Observable<Album> {
     const albumUrl = `${this.url}/${albumId}`;
-    return this.http.put<Album>(albumUrl, { title: newTitle });
+    return this.http.put<Album>(albumUrl, { userId: newUserId, title: newTitle });
   }
-
 }

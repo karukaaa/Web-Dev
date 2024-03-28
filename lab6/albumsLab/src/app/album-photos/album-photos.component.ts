@@ -19,14 +19,14 @@ export class AlbumPhotosComponent {
     private router: Router
   ) { }
 
-  ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      this.albumId = +params['id'];
-      if (this.albumId) {
-        this.photos$ = this.albumsService.getPhotosByAlbumId(this.albumId);
-      }
-    });
-  }
+  // ngOnInit(): void {
+  //   this.route.params.subscribe(params => {
+  //     this.albumId = +params['id'];
+  //     if (this.albumId) {
+  //       this.photos$ = this.albumsService.getPhotosByAlbumId(this.albumId);
+  //     }
+  //   });
+  // }
     goBack(): void{
     this.router.navigate(['/albums']);
   }

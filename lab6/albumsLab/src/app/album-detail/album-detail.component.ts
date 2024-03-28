@@ -40,7 +40,7 @@ export class AlbumDetailComponent {
       return;
     }
 
-    this.albumsService.updateAlbum(this.album.id, this.editedTitle).subscribe(
+    this.albumsService.updateAlbum(this.album.id, this.album.userId ,  this.editedTitle).subscribe(
       updatedAlbum => {
         this.album = updatedAlbum;
         this.editedTitle = '';
