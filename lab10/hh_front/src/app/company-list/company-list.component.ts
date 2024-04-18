@@ -1,29 +1,24 @@
-// src/app/company-list/company-list.component.ts
 import { Component, OnInit } from '@angular/core';
-import { CompanyService } from '../services/company.service';
-import { Company } from '../models/company.model';
+import { HttpClient } from '@angular/common/http';
+import { Company } from '../company.interface';
+import { CompaniesService } from '../companies.service';
 
 @Component({
   selector: 'app-company-list',
   templateUrl: './company-list.component.html',
-  styleUrls: ['./company-list.component.scss']
+  styleUrl: './company-list.component.css'
 })
 export class CompanyListComponent implements OnInit {
-  companies: Company[] | undefined;
-  selectedCompany: Company | null = null;
+  
+  companies: Company[] = []
 
-  constructor(private companyService: CompanyService) { }
+  constructor (private companiesService: CompaniesService){}
 
   ngOnInit(): void {
-    this.getCompanies();
+    this.companiesService.getCompanies().subscribe(
+      companies => {this.companies = companies;},
+      error=>{console.error(error);}
+    );
   }
 
-  getCompanies(): void {
-    this.companyService.getCompanies()
-      .subscribe((companies: Company[] | undefined) => this.companies = companies);
-  }
-
-  selectCompany(company: Company): void {
-    this.selectedCompany = company;
-  }
 }

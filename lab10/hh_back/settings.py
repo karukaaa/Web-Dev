@@ -53,11 +53,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'hh_back.urls'
 
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+TEMPLATES = [goTemplates',
         'DIRS': [],
         'APP_DIRS': True,
+    {
+        'BACKEND': 'django.template.backends.django.Djan
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
